@@ -13,7 +13,7 @@ Produce a complete, practical UGC ad package in Chinese for any product category
 2. Classify the product category and risk level before writing hooks or claims. Read `references/general-tiktok-product-compliance.md` for category routing, restricted/prohibited categories, disclosure rules, AIGC notes, and landing-page consistency.
 3. If the product appears prohibited, illegal, counterfeit, unsafe, or too regulated to assess from the available information, do not write a promotional ad. Explain the blocker and ask for proof, category clarification, or a safer non-promotional alternative.
 4. If the product is restricted, sensitive, newly regulated, or not clearly covered by bundled references, verify current official TikTok and market-specific policy sources before producing direct-response ad copy. Ask for required market, age-gating, business verification, substantiation, and legal/approval details.
-5. If any of these six items are missing, ask for them before writing the full plan unless the user explicitly asks you to decide by default:
+5. If any of these six items are missing, use Setup Question Mode before writing the full plan unless the user explicitly asks you to decide by default:
    - target country or region
    - publishing platform
    - spoken language
@@ -22,12 +22,56 @@ Produce a complete, practical UGC ad package in Chinese for any product category
    - duration
 6. If the user asks you to decide, state the default assumptions briefly and continue.
 7. For U.S. TikTok beauty, skincare, lip care, health-adjacent, influencer, or AI-generated creator content, also read `references/us-tiktok-beauty-compliance.md` before drafting claims, comparisons, disclosures, or AIGC notes.
-8. Generate the ad package with the fixed section order below.
-9. End with an execution checklist the user can follow immediately.
+8. Read `references/output-quality-bar.md` when producing a full ad package or testing whether output matches the source dialogue's quality level.
+9. Generate the ad package with the fixed section order below.
+10. End with an execution checklist the user can follow immediately.
+
+## Quality Gate
+
+Before finalizing a full ad package, verify it would pass these checks:
+
+- It starts from the actual product image details, not a generic ecommerce template.
+- It either asks the six setup questions first or states explicit defaults when the user authorized default decisions.
+- Every section includes product-specific details, not placeholders such as "show product", "highlight benefits", or "add CTA".
+- The output feels like a strong TikTok seeding script, not a cautious compliance memo: hooks, product understanding, script, B-roll, and CTA should push the strongest credible reason to buy.
+- For ordinary products with visible demo potential, use a contrast/result/demo angle by default: before vs after, indoor vs outdoor, problem vs quick fix, old routine vs new routine, or first impression vs reaction.
+- Product selling points should be densely packed but still grounded: include visible packaging, physical design, texture/material, scent/color/finish, usage scene, routine fit, and the strongest provided label claims when they are available.
+- Spoken lines should sound platform-native: use casual U.S. TikTok phrasing such as "wait okay", "hear me out", "I need to show you", "look at this", "POV", "I'm keeping this in my bag", and natural direct CTAs when appropriate.
+- The creator profile, scene, wardrobe, tone, hooks, script, B-roll, and AI video prompt match the product category and target buyer.
+- The AI video prompt uses consistent reference placeholders: `@Image1` for the fixed creator and `@Image3` for the product image, unless the user supplies a different convention.
+- The Seedance/video prompt is directly copyable and includes timestamped action blocks, audio, spoken lines, and fallback sub-segments.
+- The final checklist includes product-identity, first-2-second hook, creator consistency, key physical selling point, before/after or demo honesty, platform-native voice, CTA clarity, disclosure, and AIGC label checks.
+
+## Sales Energy Rules
+
+The source dialogue's effect is strong because it sounds like a creator trying to sell a product she is excited about. Preserve that energy while staying within claim limits.
+
+- Default to "strong seeding" language for ordinary ecommerce products: excited first-person experience, visible demo, reason-to-believe stack, and a clear purchase action.
+- Do not make the main script over-cautious. Put proof caveats in section `5. 合规话术与发布前检查`; keep the spoken script punchy and creator-like.
+- When a claim needs proof, use a claim ladder instead of flattening the ad:
+  - If the product image, label, landing page, or user notes support it, the script may say the claim directly in natural language.
+  - If only the demo can show it, phrase it as what the viewer can observe: "look how...", "you can see...", "it goes from... to...".
+  - If only the creator can personally feel it, phrase it as personal experience: "for me", "it feels", "I like using it when...".
+  - If the claim is unverified safety, medical, guaranteed result, certification, or quantified performance, move it to the compliance section and write a safer punchy alternative for the script.
+- For before/after or effect-led products, include the strongest credible transformation in the hook, script, B-roll, and Seedance prompt. Examples of transformation formats: dry to glossy, clear to tinted, messy to organized, dull to shiny, bulky to compact, slow to easy, ordinary to premium.
+- Prefer direct-response CTA when the platform and market fit it: "linked in my bio", "shop it now", "check the comments", "go look at the details", or the user's requested CTA.
+
+## Setup Question Mode
+
+When the user uploads a product image and says `/skill` or asks for a plan but has not provided the six required setup items:
+
+1. First describe what is visible in the product image in 1-3 concrete sentences.
+2. Ask the six setup questions clearly.
+3. Include platform examples by region when helpful.
+4. End with a recommended default direction based on the product image, including platform, style, creator type, and key B-roll.
+5. Offer a one-line shortcut the user can reply with, such as `你帮我默认决定，先给我一版美国TikTok英文真人口播15秒版本`.
 
 ## Output Structure
 
 Use this order unless the user asks for another format:
+
+Title
+   Start with `中文真人感UGC广告制作方案`, then a product-specific subtitle using the detected product name, market, platform, duration, and voice form. Ensure the duration in the title matches the user's request.
 
 0. 小白解释
    Explain only the terms needed for this task, such as UGC, Hook, B-roll, CTA, 真人口播, and Segment.
@@ -46,6 +90,12 @@ Use this order unless the user asks for another format:
    - 这条广告要让用户相信什么
    - 最后要用户做什么
 
+   Write this section with sales density. Do not stop at safe factual description. Convert each visible or provided product feature into a buyer-facing reason to care, including:
+   - physical hook: shape, applicator, lens, texture, color, packaging, size, material, or visual mechanism
+   - emotional hook: why the user would feel smart, upgraded, relieved, prettier, more prepared, cleaner, faster, or more put-together
+   - routine hook: where it lives, when it is used, what old habit it replaces, and why it is convenient
+   - proof hook: what the viewer can actually see in the demo or what the label/user-provided notes support
+
 4. 广告结构
    Choose one structure and explain why. Prefer hook-body-close for TikTok. For 15-second product ads, a common structure is:
    - 0:00-0:02 hook with product, use case, problem, result, or surprising line
@@ -54,11 +104,18 @@ Use this order unless the user asks for another format:
    - 0:10-0:13 result, reaction, or strongest reason to care
    - 0:13-0:15 CTA
 
+   For ordinary products with a visible result or use demonstration, prefer a strong TikTok sales structure over a neutral explainer:
+   - before/after contrast
+   - problem/product/result
+   - "I did not expect this" reveal
+   - routine upgrade
+   - side-by-side comparison with the old habit
+
 5. 合规话术与发布前检查
    Treat this as the missing section from the source dialogue. Include it before creator/reference setup so the later script does not inherit risky claims.
 
    Include:
-   - 品类判断: ordinary, restricted/sensitive, prohibited/high-risk, or unclear.
+   - 品类判断: ordinary, restricted/sensitive, prohibited/high-risk, or unclear. State the product category in plain Chinese without creating a one-off rule for the current product.
    - 可说: observable product facts, use cases, sensory experience, convenience, design, material, routine fit, and personal experience that the creator could honestly support.
    - 慎说: before/after, competitor comparisons, superlatives, price/value claims, safety claims, health/body/financial results, time-limited offers, and any claim requiring proof.
    - 不说: guaranteed outcomes, miracle results, deceptive urgency, unsupported certifications, counterfeit/brand-authenticity claims, medical cures, financial gains, unsafe use, illegal use, or anything inconsistent with the landing page.
@@ -76,9 +133,17 @@ Use this order unless the user asks for another format:
 
 7. Hook 备选
    Provide 8-10 hooks in the spoken language requested by the user. Group them by testing angle: curiosity, contrast, pain point, real experience, or social proof. Recommend 1-2 hooks and explain the reason briefly.
+   Hooks should sound native to the platform and a little salesy, not corporate. Include punchy creator formats such as "Wait okay...", "I need to show you...", "POV...", "Tell me why...", "I did not expect...", "This is the reason...", and "If you [pain point], watch this." Do not make all hooks cautious or informational.
 
 8. 口播脚本
    Provide the primary script with timestamps. For TikTok English UGC, make it natural, spoken, and short enough for the duration. Avoid over-polished ad copy.
+   The primary script should be the strongest credible selling version, not the safest possible wording. It should:
+   - open with a creator-style hook in the first 2 seconds
+   - name the product or product type quickly
+   - stack 2-4 concrete product selling points in spoken language
+   - include a visible demo/result/reaction moment
+   - end with a clear CTA
+   - reserve long disclaimers for section `5`, not the spoken script
 
    When useful, include:
    - recommended short version
@@ -87,6 +152,7 @@ Use this order unless the user asks for another format:
 
 9. B-roll 镜头清单
    Include shot number, visual content, approximate duration, whether speech continues on/off camera, and edit position.
+   B-roll should prove the sales claim visually. Include close-ups of the key physical hook, a before/after or contrast shot when possible, creator reaction, packaging/label detail, and a final product beauty shot that makes the item easy to recognize.
 
 10. AI 视频生成 Prompt
    Write a copyable prompt for Seedance or the requested video model. Include:
@@ -97,6 +163,7 @@ Use this order unless the user asks for another format:
    - audio/voice/lip-sync requirements
    - spoken lines
    - fallback sub-segments if single-shot generation is unstable
+   The prompt should carry the same sales energy as the script: demo the transformation clearly, keep the creator excited and casual, show the strongest product details, and avoid turning the scene into a neutral product explainer.
 
 11. 素材表、字幕、音效、自检
    Provide edit order, caption placement, caption style, light sound effects, music decision, and a final QC checklist.
@@ -110,6 +177,7 @@ Use this order unless the user asks for another format:
 - Keep spoken scripts in the requested spoken language.
 - Use concrete details from the product image; do not invent ingredients, price, certifications, tests, or awards.
 - Prefer "真人随手分享" over polished brand-film language.
+- Prefer strong creator seeding over cautious consultant language for ordinary products. The output should feel like it can be handed to a creator or video model and immediately sell the item.
 - Keep one creator consistent across all image/video prompts.
 - Use natural, platform-native CTA wording: "link in bio", "check the comments", "shop now", or the user's requested CTA.
 - When claims are uncertain, say what evidence is needed instead of guessing.
