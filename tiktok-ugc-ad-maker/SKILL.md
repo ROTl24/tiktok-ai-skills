@@ -47,7 +47,7 @@ Before finalizing a full ad package, verify it would pass these checks:
 The source dialogue's effect is strong because it sounds like a creator trying to sell a product she is excited about. Preserve that energy while staying within claim limits.
 
 - Default to "strong seeding" language for ordinary ecommerce products: excited first-person experience, visible demo, reason-to-believe stack, and a clear purchase action.
-- Do not make the main script over-cautious. Put proof caveats in section `5. 合规话术与发布前检查`; keep the spoken script punchy and creator-like.
+- Do not make the main script over-cautious. Put proof caveats in section `5. 信息缺失/合规话术`; keep the spoken script punchy and creator-like.
 - When a claim needs proof, use a claim ladder instead of flattening the ad:
   - If the product image, label, landing page, or user notes support it, the script may say the claim directly in natural language.
   - If only the demo can show it, phrase it as what the viewer can observe: "look how...", "you can see...", "it goes from... to...".
@@ -78,25 +78,27 @@ Required setup-question format:
 6. Add the heading `我建议的默认方向（仅供参考）` and give a compact product-specific recommendation covering platform, style, creator, and key B-roll. Make it feel like a useful creative recommendation, not a compliance memo.
 7. End with: `请告诉我上面6个问题的答案，或者直接回复“你帮我默认决定，先给我一版美国TikTok英文真人口播15秒版本”，我就立刻按默认假设出完整方案。`
 
-Do not include sections titled `参数确认模式`, `简要计划`, `图片识别`, `合规初判`, or `验证点` in Setup Question Mode. If the product is ordinary ecommerce, keep compliance notes out of this setup response except for one short embedded caution when a visible claim clearly needs proof. Save the full compliance discussion for section `5. 合规话术与发布前检查` in the complete package. If the product is restricted, prohibited, unsafe, or unclear, follow the workflow blocker rules instead of using this normal setup-question format.
+Do not include sections titled `参数确认模式`, `简要计划`, `图片识别`, `合规初判`, or `验证点` in Setup Question Mode. If the product is ordinary ecommerce, keep compliance notes out of this setup response except for one short embedded caution when a visible claim clearly needs proof. Save the full compliance discussion for section `5. 信息缺失/合规话术` in the complete package. If the product is restricted, prohibited, unsafe, or unclear, follow the workflow blocker rules instead of using this normal setup-question format.
 
 ## Output Structure
 
 Use this order unless the user asks for another format:
 
-Title
-   Start with `中文真人感UGC广告制作方案`, then a product-specific subtitle using the detected product name, market, platform, duration, and voice form. Ensure the duration in the title matches the user's request.
+Full package mode is a user-facing production document. Do not expose internal planning or engineering workflow. Do not add opening sections such as `执行假设`, `权衡`, `简要计划`, or final notes such as `验证说明`, lint, test, or code-change status. Start at the title, then section `0`.
 
-0. 小白解释
-   Explain only the terms needed for this task, such as UGC, Hook, B-roll, CTA, 真人口播, and Segment.
+Title
+   First line exactly `中文真人感UGC广告制作方案`. Second line should be a compact source-style subtitle such as `产品名·美国TikTok15秒真人口播` or `产品名·美国TikTok15秒旁白种草`. Avoid colon-heavy report titles such as `中文真人感 UGC 广告制作方案：...`. Ensure the duration in the title matches the user's request.
+
+0. 小白解释（先把术语讲清楚）
+   Explain only the terms needed for this task, such as UGC, Hook, B-roll, CTA, 真人口播, and Segment. For each term, add why it matters for TikTok conversion or video generation, not just a dictionary definition.
 
 1. 制作参数确认
-   Confirm the user's choices in a compact table-like list.
+   Confirm the user's choices in a two-column table-like block with `项目` and `确认结果`. Include at least 投放国家, 发布平台, 成片口播语言, 声音形式, 视频时长/Segment count, 画面比例, 达人, 产品图.
 
-2. 默认假设
-   List defaults you chose because the user did not specify them. Keep this honest and editable.
+2. 我替你做的默认假设
+   List defaults you chose because the user did not specify them. Focus on 达人, 场景, 风格, CTA, 核心情绪, and why those defaults fit the product. Keep this honest and editable, and end with a short sentence like `如果不喜欢以上任何一项，告诉我我改。` Do not put proof gaps, UV/certification caveats, or other compliance-heavy material here unless one short caution is necessary; save that for section `5`.
 
-3. 产品理解
+3. 产品理解（翻译成人话）
    Translate product features into user-facing benefits and pain points. Separate:
    - 产品是什么
    - 用户为什么需要它
@@ -111,7 +113,7 @@ Title
    - proof hook: what the viewer can actually see in the demo or what the label/user-provided notes support
 
 4. 广告结构
-   Choose one structure and explain why. Prefer hook-body-close for TikTok. For 15-second product ads, a common structure is:
+   Start with `选用: ...` and `为什么选这个: ...`. Prefer hook-body-close, before/after, problem/product/result, or contrast-led TikTok structures over neutral explainers. Then provide a table-like timeline with columns `时间`, `内容`, and `目的`. For 15-second product ads, a common structure is:
    - 0:00-0:02 hook with product, use case, problem, result, or surprising line
    - 0:02-0:05 product reveal and context
    - 0:05-0:10 use/demo/proof shot
@@ -125,8 +127,8 @@ Title
    - routine upgrade
    - side-by-side comparison with the old habit
 
-5. 合规话术与发布前检查
-   Treat this as the missing section from the source dialogue. Include it before creator/reference setup so the later script does not inherit risky claims.
+5. 信息缺失与合规话术
+   Include this before creator/reference setup so the later script does not inherit risky claims. If key evidence, landing-page details, pricing, specs, or claim proof is missing, use the source-style heading `5. 信息缺失，这个需要补充` and list exactly what the user should verify. If nothing material is missing, use `5. 合规话术与发布前检查`.
 
    Include:
    - 品类判断: ordinary, restricted/sensitive, prohibited/high-risk, or unclear. State the product category in plain Chinese without creating a one-off rule for the current product.
@@ -142,15 +144,15 @@ Title
    - 风险原因
    - 安全改写
 
-6. 固定虚拟达人与参考图
-   If there is no fixed creator image, design one creator only. Keep age, look, wardrobe, setting, speaking style, and why it fits the product. Provide an image-generation prompt for `@Image1`.
+6. 固定虚拟达人+参考图
+   If there is no fixed creator image, design one creator only. Split into `固定虚拟达人设定` and `参考图准备`. Keep age, look, wardrobe, setting, speaking style, and why it fits the product. Provide an image-generation prompt for `@Image1`. For `@Image3`, say to use the uploaded product image directly; optionally provide a cleaner product-photo prompt only if it helps.
 
-7. Hook 备选
-   Provide 8-10 hooks in the spoken language requested by the user. Group them by testing angle: curiosity, contrast, pain point, real experience, or social proof. Recommend 1-2 hooks and explain the reason briefly.
+7. Hook备选（10条美式英文）
+   Provide 8-10 hooks in the spoken language requested by the user. If the requested language is American English, use this heading. Group them by testing angle: testing, contrast, pain point, real experience, curiosity, or social proof. Number hooks clearly and recommend 1-2 hook numbers with a brief reason.
    Hooks should sound native to the platform and a little salesy, not corporate. Include punchy creator formats such as "Wait okay...", "I need to show you...", "POV...", "Tell me why...", "I did not expect...", "This is the reason...", and "If you [pain point], watch this." Do not make all hooks cautious or informational.
 
 8. 口播脚本
-   Provide the primary script with timestamps. For TikTok English UGC, make it natural, spoken, and short enough for the duration. Avoid over-polished ad copy.
+   Provide `15秒短版（推荐使用）` with timestamps. For TikTok English UGC, make it natural, spoken, and short enough for the duration. Avoid over-polished ad copy.
    The primary script should be the strongest credible selling version, not the safest possible wording. It should:
    - open with a creator-style hook in the first 2 seconds
    - name the product or product type quickly
@@ -160,16 +162,15 @@ Title
    - reserve long disclaimers for section `5`, not the spoken script
 
    When useful, include:
-   - recommended short version
-   - backup longer version
-   - more casual creator-style version
+   - `30秒完整版（备用）`
+   - `更素人口语版（更松弛）`
 
 9. B-roll 镜头清单
-   Include shot number, visual content, approximate duration, whether speech continues on/off camera, and edit position.
+   Include a table-like list with columns `#`, `画面内容`, `时长`, `是否要口播`, and `剪辑位置`.
    B-roll should prove the sales claim visually. Include close-ups of the key physical hook, a before/after or contrast shot when possible, creator reaction, packaging/label detail, and a final product beauty shot that makes the item easy to recognize.
 
-10. AI 视频生成 Prompt
-   Write a copyable prompt for Seedance or the requested video model. Include:
+10. Seedance Prompt（可复制）
+   Use this heading when the user did not request another video model. Start with a compact line such as `Segment1|产品名 前后对比UGC|0:00-0:15`, then `用途说明:`. Write a copyable prompt for Seedance or the requested video model. Include:
    - aspect ratio and duration
    - handheld phone-video style
    - fixed creator reference and product reference placeholders
@@ -179,11 +180,11 @@ Title
    - fallback sub-segments if single-shot generation is unstable
    The prompt should carry the same sales energy as the script: demo the transformation clearly, keep the creator excited and casual, show the strongest product details, and avoid turning the scene into a neutral product explainer.
 
-11. 素材表、字幕、音效、自检
-   Provide edit order, caption placement, caption style, light sound effects, music decision, and a final QC checklist.
+11. 素材表
+   Split into `素材剪辑顺序`, `字幕`, `音效`, and `成片自检清单`. Provide edit order, caption placement, caption style, light sound effects, music decision, and a final QC checklist. The self-check should be concrete enough for a CapCut/TikTok draft review.
 
-12. 下一步操作
-   Give direct operational steps, such as generating `@Image1`, using the product image as `@Image3`, testing the first segment, editing in CapCut, previewing in TikTok drafts, and A/B testing hooks.
+12. 下一步操作（你现在该做什么）
+   Give direct operational steps as `Step1`, `Step2`, `Step3`, etc., such as generating `@Image1`, using the product image as `@Image3`, testing the first segment, editing in CapCut, previewing in TikTok drafts, and A/B testing hooks.
 
 ## Style Rules
 

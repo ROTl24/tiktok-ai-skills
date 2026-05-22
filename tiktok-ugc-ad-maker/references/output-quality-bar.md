@@ -9,7 +9,7 @@ The source dialogue is strong because it does all of the following:
 1. Reads the product image first and names concrete visual/label details.
 2. Asks six setup questions before the full plan when key parameters are missing.
 3. If parameters are missing, asks the six setup questions after first explaining what is visible in the product image and recommending a default direction.
-4. If the user supplies parameters, produces a complete Chinese-facing production plan with a title plus 13 numbered parts: 0 小白解释, 1 制作参数确认, 2 默认假设, 3 产品理解, 4 广告结构, 5 合规话术, 6 固定虚拟达人+参考图, 7 Hook 备选, 8 口播脚本, 9 B-roll, 10 Seedance Prompt, 11 素材表/字幕/音效/自检, 12 下一步操作.
+4. If the user supplies parameters, produces a complete Chinese-facing production plan with a title plus 13 numbered parts: 0 小白解释, 1 制作参数确认, 2 我替你做的默认假设, 3 产品理解, 4 广告结构, 5 信息缺失/合规话术, 6 固定虚拟达人+参考图, 7 Hook备选, 8 口播脚本, 9 B-roll, 10 Seedance Prompt, 11 素材表, 12 下一步操作.
 5. Converts product features into user pain points and believable TikTok language.
 6. Sounds like a strong creator seeding script, not a cautious compliance memo: the hooks, script, and CTA should feel like they are trying to sell.
 7. Uses effect-led or contrast-led framing when the product supports it, such as before/after, old routine/new routine, clear/tinted, dry/glossy, dull/shiny, bulky/compact, or problem/result.
@@ -44,11 +44,42 @@ It should not include:
 - standalone `合规初判` for ordinary ecommerce products
 - long proof or policy discussion before the user answers the six setup questions
 
-For ordinary products with visible technical or protection claims, mention evidence needs only as a short embedded caution. Keep the response sales-oriented and product-specific; reserve the full compliance rewrite for section `5. 合规话术与发布前检查` in the complete package.
+For ordinary products with visible technical or protection claims, mention evidence needs only as a short embedded caution. Keep the response sales-oriented and product-specific; reserve the full compliance rewrite for section `5. 信息缺失/合规话术` in the complete package.
+
+## Full Package Acceptance Bar
+
+When the user has supplied parameters or approved defaults, the response should read like the source production document, not a polished project report.
+
+It must include:
+
+- first line `中文真人感UGC广告制作方案`, followed by a compact subtitle like `产品名·美国TikTok15秒真人口播`
+- no preface before section `0`; do not add `执行假设`, `权衡`, `简要计划`, or code-task `验证说明`
+- section `0. 小白解释（先把术语讲清楚）` with short explanations of why UGC, Hook, B-roll, CTA, 真人口播, and Segment matter on TikTok
+- section `1. 制作参数确认` as a two-column table-like block with `项目` and `确认结果`
+- section `2. 我替你做的默认假设` focused on creator, scene, style, CTA, and core emotion; keep proof gaps and risky claims for section `5`
+- section `3. 产品理解（翻译成人话）` that converts product facts into pain points, reasons to believe, and desired user action
+- section `4. 广告结构` with `选用`, `为什么选这个`, and a time/content/purpose table
+- section `5` that surfaces missing proof or compliance constraints before scripts. If key proof is missing, start with `5. 信息缺失，这个需要补充`; otherwise use `5. 合规话术与发布前检查`
+- section `6. 固定虚拟达人+参考图` split into creator setting and reference-image preparation, including `@Image1` and `@Image3`
+- section `7. Hook备选（10条美式英文）` grouped by testing angle and recommending hook numbers
+- section `8. 口播脚本` with `15秒短版（推荐使用）`, plus backup longer and more casual versions when useful
+- section `9. B-roll镜头清单` as a table with shot number, visual, duration, speech state, and edit position
+- section `10. Seedance Prompt（可复制）` with a `Segment1|...|0:00-0:15` line, usage note, copyable prompt, audio, spoken lines, and sub-segments
+- section `11. 素材表` split into edit order, subtitles, sound effects, and final self-check
+- section `12. 下一步操作（你现在该做什么）` with Step1, Step2, Step3... operational steps
+
+It should avoid:
+
+- bolding every section heading as if it were a report
+- colon-heavy title format such as `中文真人感 UGC 广告制作方案：...`
+- moving compliance caveats into the opening assumptions
+- generic B-roll bullets without duration, speech state, and edit position
+- naming the prompt section `AI 视频生成 Prompt` when the requested/default model is Seedance
+- ending with development-process notes such as lint/test status
 
 ## Sales Energy Requirements
 
-A full package should not become weaker just because it includes compliance. Section `5. 合规话术与发布前检查` should set boundaries; sections `7-10` should still sell hard inside those boundaries.
+A full package should not become weaker just because it includes compliance. Section `5. 信息缺失/合规话术` should set boundaries; sections `7-10` should still sell hard inside those boundaries.
 
 For ordinary ecommerce products:
 
@@ -73,7 +104,7 @@ A full package is not acceptable if it lacks any of these:
 - target market, platform, spoken language, voice form, duration, ratio, creator, product image reference
 - product-specific default assumptions
 - product-specific pain points and reasons to believe
-- compliance/claim rewrite section before script generation
+- missing-info/compliance/claim rewrite section before script generation
 - fixed creator reference prompt
 - 8-10 native hooks in the spoken language, including strong creator-style and pain/contrast hooks
 - timestamped 15-second script plus at least one backup version, with strong seeding energy and a clear CTA
@@ -102,4 +133,4 @@ When a test product contains a technical, safety, protection, performance, medic
 - describe only what is visible or provided by the user
 - ask for proof before repeating exact certification or quantified protection claims
 - rewrite risky wording into observable, experience-based wording that still sounds like a creator selling the product
-- include the risk in the section `5. 合规话术与发布前检查`
+- include the risk in section `5. 信息缺失/合规话术`
