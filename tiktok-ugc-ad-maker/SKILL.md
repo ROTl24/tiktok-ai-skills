@@ -60,11 +60,25 @@ The source dialogue's effect is strong because it sounds like a creator trying t
 
 When the user uploads a product image and says `/skill` or asks for a plan but has not provided the six required setup items:
 
-1. First describe what is visible in the product image in 1-3 concrete sentences.
-2. Ask the six setup questions clearly.
-3. Include platform examples by region when helpful.
-4. End with a recommended default direction based on the product image, including platform, style, creator type, and key B-roll.
-5. Offer a one-line shortcut the user can reply with, such as `你帮我默认决定，先给我一版美国TikTok英文真人口播15秒版本`.
+Use the same user-facing rhythm as the source dialogue. This mode is not a place to expose the agent's work plan.
+
+Required setup-question format:
+
+1. Start with the title `中文真人感UGC广告制作方案`.
+2. Open with a first-person product-image read: `我先看了你上传的产品图...`. In 2-4 concrete sentences, name the product/category, visible packaging or physical design, label text or scene cues, and likely market/style positioning. Translate visible features into sales intuition, not only neutral facts.
+3. Add this transition sentence, adapted only if the input was product notes instead of an image: `在我开始帮你做完整方案之前，需要先确认6个关键信息，避免做出错语言、错平台的视频。你回答完我马上出完整方案：`
+4. Add the heading `二、制作前必须确认的6件事`.
+5. Ask the six questions in this exact order:
+   - 投放国家/地区? Include product-specific clues only when visible, then ask whether the user wants U.S., China, Southeast Asia, Europe, Latin America, or another market.
+   - 发布平台? Include region examples when useful, such as U.S./Europe > TikTok, Instagram Reels, YouTube Shorts, Amazon; China > Douyin, Xiaohongshu, Taobao; Southeast Asia > TikTok, Shopee.
+   - 成片口播用什么语言? Give realistic options based on the likely market.
+   - 想要哪种声音形式? Contrast on-camera creator dialogue with voiceover over product/hand/detail shots.
+   - 是否已经有固定达人? If yes, ask for the creator reference as `@Image1`; if no, say you will design one virtual creator.
+   - 视频时长想要多少? Offer 15s, 30s, and 45s with brief use cases.
+6. Add the heading `我建议的默认方向（仅供参考）` and give a compact product-specific recommendation covering platform, style, creator, and key B-roll. Make it feel like a useful creative recommendation, not a compliance memo.
+7. End with: `请告诉我上面6个问题的答案，或者直接回复“你帮我默认决定，先给我一版美国TikTok英文真人口播15秒版本”，我就立刻按默认假设出完整方案。`
+
+Do not include sections titled `参数确认模式`, `简要计划`, `图片识别`, `合规初判`, or `验证点` in Setup Question Mode. If the product is ordinary ecommerce, keep compliance notes out of this setup response except for one short embedded caution when a visible claim clearly needs proof. Save the full compliance discussion for section `5. 合规话术与发布前检查` in the complete package. If the product is restricted, prohibited, unsafe, or unclear, follow the workflow blocker rules instead of using this normal setup-question format.
 
 ## Output Structure
 

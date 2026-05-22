@@ -19,6 +19,33 @@ The source dialogue is strong because it does all of the following:
 11. Maintains one fixed creator and one product reference throughout generation.
 12. Gives fallback segment generation instructions if a 15-second single shot is unstable.
 
+## Setup Question Mode Acceptance Bar
+
+When required setup parameters are missing, the response should resemble the source dialogue's setup screen, not an internal planning note.
+
+It must include:
+
+- title `中文真人感UGC广告制作方案`
+- first-person product read beginning like `我先看了你上传的产品图...`
+- a clear reason for asking setup questions: avoiding wrong language, wrong platform, or wrong market assumptions
+- heading `二、制作前必须确认的6件事`
+- the six questions in order: market, platform, spoken language, voice form, fixed creator, duration
+- platform examples by region when helpful
+- heading `我建议的默认方向（仅供参考）`
+- product-specific default recommendation with platform, style, creator, and key B-roll
+- final shortcut sentence inviting the user to approve the default 15-second U.S. TikTok English on-camera version
+
+It should not include:
+
+- `参数确认模式`
+- `简要计划`
+- `验证点`
+- standalone `图片识别`
+- standalone `合规初判` for ordinary ecommerce products
+- long proof or policy discussion before the user answers the six setup questions
+
+For ordinary products with visible technical or protection claims, mention evidence needs only as a short embedded caution. Keep the response sales-oriented and product-specific; reserve the full compliance rewrite for section `5. 合规话术与发布前检查` in the complete package.
+
 ## Sales Energy Requirements
 
 A full package should not become weaker just because it includes compliance. Section `5. 合规话术与发布前检查` should set boundaries; sections `7-10` should still sell hard inside those boundaries.

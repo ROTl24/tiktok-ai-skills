@@ -111,5 +111,6 @@ Use the relevant branch before drafting:
 - Finance, insurance, crypto, income, jobs, education offers: treat as sensitive. Avoid earnings promises, risk-free language, and missing risk disclosures.
 - Alcohol or age-restricted products: require market and age-gating details; do not target minors or normalize unsafe use.
 - Tools, knives, safety equipment, outdoor gear: avoid violence, self-harm, unsafe demonstrations, or weapon framing. Age-gate if required by market.
+- Products with safety, certification, protection, performance, or technical feature claims: ask for proof before using exact certifications, total-protection language, medical claims, occupational safety claims, quantified performance, or claims that the product prevents harm. Safer wording should describe visibly demonstrated behavior and user experience without overstating certainty.
 - Children's products and toys: avoid unsafe use, choking-risk ambiguity, child-directed purchase pressure, and unsupported safety claims.
 - Branded, luxury, collectible, or logo-heavy products: ask for authorization or authenticity proof if the ad makes official/authentic claims.
