@@ -1,0 +1,4 @@
+interface:
+  display_name: "TikTok UGC Ad Maker"
+  short_description: "Create category-aware TikTok UGC ads from products"
+  default_prompt: "Use $tiktok-ugc-ad-maker to turn a product image into a category-aware TikTok UGC ad plan and AI video prompt."
