@@ -1,6 +1,6 @@
 ---
 name: tiktok-ugc-ad-maker
-description: Create Chinese-facing TikTok/short-video UGC ad production plans from product images or product notes across ecommerce product categories. Use when the user asks for /skill, 真人感UGC广告, TikTok/Reels/Shorts scripts, hooks, B-roll shot lists, virtual creator setup, Seedance/Midjourney/video-generation prompts, product-category compliance checks, or a reusable workflow that turns an AI-user dialogue into an ad-making skill.
+description: Create Chinese-facing TikTok/short-video UGC ad production plans from product images or product notes across ecommerce product categories. Use when the user asks for /skill, 真人感UGC广告, TikTok/Reels/Shorts scripts, hooks, B-roll shot lists, storyboard image-generation tables, virtual creator setup, Seedance/Midjourney/video-generation prompts, product-category compliance checks, or a reusable workflow that turns an AI-user dialogue into an ad-making skill.
 ---
 
 # TikTok UGC Ad Maker
@@ -39,6 +39,7 @@ Before finalizing a full ad package, verify it would pass these checks:
 - Spoken lines should sound platform-native: use casual U.S. TikTok phrasing such as "wait okay", "hear me out", "I need to show you", "look at this", "POV", "I'm keeping this in my bag", and natural direct CTAs when appropriate.
 - The creator profile, scene, wardrobe, tone, hooks, script, B-roll, and AI video prompt match the product category and target buyer.
 - The AI video prompt uses consistent reference placeholders: `@Image1` for the fixed creator and `@Image3` for the product image, unless the user supplies a different convention.
+- The storyboard image-generation section keeps a closed logic chain from product breakdown to pain-point prompt conversion to shot storyboard, and outputs both a table and a JSON version.
 - The Seedance/video prompt is directly copyable and includes timestamped action blocks, audio, spoken lines, and fallback sub-segments.
 - The final checklist includes product-identity, first-2-second hook, creator consistency, key physical selling point, before/after or demo honesty, platform-native voice, CTA clarity, disclosure, and AIGC label checks.
 
@@ -169,7 +170,53 @@ Title
    Include a table-like list with columns `#`, `画面内容`, `时长`, `是否要口播`, and `剪辑位置`.
    B-roll should prove the sales claim visually. Include close-ups of the key physical hook, a before/after or contrast shot when possible, creator reaction, packaging/label detail, and a final product beauty shot that makes the item easy to recognize.
 
-10. Seedance Prompt（可复制）
+10. 分镜图生成
+   This section is mandatory in full package mode. It must keep the full logic closed loop: `产品拆解 -> 痛点转提示词 -> 分镜脚本`. Do not skip any step, and do not output vague placeholders.
+
+   First output a compact product-to-prompt table with columns `产品元素`, `对应痛点`, `核心卖点`, `使用场景`, and `画面提示词方向`. Each row should turn a real product detail, pain point, selling point, or use scene into a visual prompt direction for the storyboard.
+
+   Then output the storyboard table exactly with these columns:
+
+   | 镜头 | 阶段 | 景别 | 运镜 | 主体动态 | 画面内容 |
+
+   Requirements:
+   - Each shot must label one stage from `Hook`, `Problem`, `Solution`, `Benefit`, and `CTA`.
+   - Each shot must use one clear shot size: `全景`, `中景`, or `特写`.
+   - Each shot must use one camera movement: `推`, `拉`, `摇`, or `静`.
+   - `主体动态` must describe the creator's or product's action, expression, or interaction.
+   - `画面内容` must describe the environment, props, people, and mood clearly enough for direct creative execution or AI image generation.
+   - Shots must progress logically: Hook grabs attention, Problem makes the pain point visible, Solution shows product advantage, Benefit shows the credible result or emotional payoff, and CTA guides purchase.
+   - Every shot must stay tied to the product's pain point, selling point, and use scenario. Do not add unrelated lifestyle filler.
+
+   After the tables, output a JSON version in a fenced `json` block. Use this schema and fill every field:
+
+   ```json
+   {
+     "storyboard_image_generation": {
+       "product_breakdown": [
+         {
+           "产品元素": "",
+           "对应痛点": "",
+           "核心卖点": "",
+           "使用场景": "",
+           "画面提示词方向": ""
+         }
+       ],
+       "shots": [
+         {
+           "镜头": 1,
+           "阶段": "Hook",
+           "景别": "特写",
+           "运镜": "推",
+           "主体动态": "",
+           "画面内容": ""
+         }
+       ]
+     }
+   }
+   ```
+
+11. Seedance Prompt（可复制）
    Use this heading when the user did not request another video model. Start with a compact line such as `Segment1|产品名 前后对比UGC|0:00-0:15`, then `用途说明:`. Write a copyable prompt for Seedance or the requested video model. Include:
    - aspect ratio and duration
    - handheld phone-video style
@@ -180,10 +227,10 @@ Title
    - fallback sub-segments if single-shot generation is unstable
    The prompt should carry the same sales energy as the script: demo the transformation clearly, keep the creator excited and casual, show the strongest product details, and avoid turning the scene into a neutral product explainer.
 
-11. 素材表
+12. 素材表
    Split into `素材剪辑顺序`, `字幕`, `音效`, and `成片自检清单`. Provide edit order, caption placement, caption style, light sound effects, music decision, and a final QC checklist. The self-check should be concrete enough for a CapCut/TikTok draft review.
 
-12. 下一步操作（你现在该做什么）
+13. 下一步操作（你现在该做什么）
    Give direct operational steps as `Step1`, `Step2`, `Step3`, etc., such as generating `@Image1`, using the product image as `@Image3`, testing the first segment, editing in CapCut, previewing in TikTok drafts, and A/B testing hooks.
 
 ## Style Rules
