@@ -4,6 +4,8 @@ Use this reference before drafting U.S.-targeted TikTok beauty, skincare, lip-ca
 
 This is a creative compliance guardrail, not legal advice. If the user needs legal clearance, tell them to verify with counsel and product substantiation.
 
+Last reviewed: 2026-07. TikTok, FTC, and FDA guidance changes; if this date is more than a few months old, re-verify the official sources below before relying on specifics.
+
 ## TikTok Creative Basics
 
 TikTok's Creative Codes emphasize:
@@ -63,6 +65,7 @@ Good disclosure behavior:
 - Use the same language as the endorsement.
 - If the endorsement is both visual and spoken, disclosure is stronger when both visual and audible.
 - Do not claim personal experience with a product the creator has not tried.
+- For an AI-generated virtual creator, treat this as absolute: never script usage-history testimony such as "I've been using this for weeks". Use observable demo phrasing, in-the-moment reactions, and labeled AIGC content instead (see the AI virtual creator testimony rule in `SKILL.md` Sales Energy Rules).
 - Do not make claims that require proof the advertiser does not have.
 
 Sources:
