@@ -1,10 +1,7 @@
 <div align="center">
 
-# TikTok UGC Ad Maker
+<img src="assets/banner.svg" alt="TikTok UGC Ad Maker — turn a product photo into a shoot-ready UGC ad plan" width="100%">
 
-**Turn a product photo into a shoot-ready TikTok UGC ad plan — with market compliance routed in, not bolted on.**
-
-一张产品图 → 可直接开拍的中文 UGC 广告方案：分镜、口播、B-roll、视频提示词、合规检查，一次产出。
 
 [![Agent Skill](https://img.shields.io/badge/Agent%20Skill-v1.1.0-1B365D)](tiktok-ugc-ad-maker/SKILL.md)
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-compatible-cc785c)](https://claude.com/claude-code)
@@ -72,26 +69,13 @@ Say "你来决定" and it states its assumptions explicitly instead of hiding th
 
 ## How It Works
 
-```mermaid
-flowchart TD
-    A[Product image or notes] --> B[Category + risk classification]
-    B -->|prohibited / unverifiable| X[Refuse and explain the blocker]
-    B -->|ok| C[Market compliance routing]
-    C --> D[Setup questions - 6 parameters]
-    D --> E[Storyboard table + JSON<br/>single source of truth]
-    E --> F[Spoken script]
-    E --> G[B-roll shot list]
-    E --> H[Seedance / video prompts]
-    F --> I[Consistency checklist<br/>every shot ID accounted for]
-    G --> I
-    H --> I
-    I -->|pass| J[Production package]
-    I -->|fail| E
-```
+<img src="assets/pipeline.svg" alt="Pipeline: storyboard is the single source of truth; script, B-roll and video prompts derive from it and must pass a consistency gate" width="100%">
 
 The storyboard is not a deliverable among others — it is the **origin**. Section 12 fails the run if any shot ID is missing downstream, which is what stops the classic failure mode where the voiceover describes a shot the storyboard never planned.
 
 ## Compliance Routing
+
+<img src="assets/compliance.svg" alt="Compliance coverage depth by market" width="100%">
 
 Coverage depth is **deliberately asymmetric and stated as such** — an honest compliance surface beats a uniform-looking one:
 

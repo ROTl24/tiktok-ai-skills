@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 620" width="1180" height="620" role="img" aria-label="Pipeline: input, classification, compliance routing, setup questions, storyboard as single source of truth, derived script b-roll and prompts, consistency gate, production package">
+  <defs>
+    <linearGradient id="pbg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0C1018"/>
+      <stop offset="100%" stop-color="#0A0D14"/>
+    </linearGradient>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#5A6880"/>
+    </marker>
+    <marker id="ahT" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#2DD4BF"/>
+    </marker>
+    <marker id="ahR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#FF5470"/>
+    </marker>
+    <pattern id="pgrid" width="34" height="34" patternUnits="userSpaceOnUse">
+      <path d="M34 0H0V34" fill="none" stroke="#FFFFFF" stroke-opacity="0.03" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1180" height="620" fill="url(#pbg)"/>
+  <rect width="1180" height="620" fill="url(#pgrid)"/>
+
+  <g font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+
+    <!-- stage 1 -->
+    <g>
+      <rect x="40" y="54" width="252" height="50" rx="10" fill="#141B29" stroke="#293347"/>
+      <text x="166" y="84" text-anchor="middle" font-size="15" fill="#D7DEEA">产品图 / 产品说明</text>
+
+      <rect x="316" y="54" width="252" height="50" rx="10" fill="#141B29" stroke="#293347"/>
+      <text x="442" y="84" text-anchor="middle" font-size="15" fill="#D7DEEA">品类与风险分级</text>
+
+      <rect x="592" y="54" width="252" height="50" rx="10" fill="#141B29" stroke="#293347"/>
+      <text x="718" y="84" text-anchor="middle" font-size="15" fill="#D7DEEA">市场合规路由</text>
+
+      <rect x="868" y="54" width="252" height="50" rx="10" fill="#141B29" stroke="#293347"/>
+      <text x="994" y="84" text-anchor="middle" font-size="15" fill="#D7DEEA">六项参数确认</text>
+
+      <path d="M292 79 H310" stroke="#5A6880" stroke-width="1.6" marker-end="url(#ah)"/>
+      <path d="M568 79 H586" stroke="#5A6880" stroke-width="1.6" marker-end="url(#ah)"/>
+      <path d="M844 79 H862" stroke="#5A6880" stroke-width="1.6" marker-end="url(#ah)"/>
+    </g>
+
+    <!-- refuse branch -->
+    <g>
+      <path d="M442 104 V128" stroke="#FF5470" stroke-width="1.5" stroke-dasharray="4 4" marker-end="url(#ahR)"/>
+      <rect x="316" y="134" width="252" height="40" rx="9" fill="#1C1420" stroke="#FF5470" stroke-opacity="0.45"/>
+      <text x="442" y="159" text-anchor="middle" font-size="13.5" fill="#FF97A9">违禁 / 假冒 / 无法评估 → 拒绝出稿</text>
+    </g>
+
+    <!-- storyboard: single source of truth -->
+    <path d="M994 104 V200 H862" stroke="#5A6880" stroke-width="1.6" fill="none" marker-end="url(#ah)"/>
+    <g>
+      <rect x="330" y="200" width="520" height="80" rx="13" fill="#12202A" stroke="#2DD4BF" stroke-opacity="0.55" stroke-width="1.6"/>
+      <text x="590" y="232" text-anchor="middle" font-size="18" font-weight="600" fill="#8FF0E2">分镜表 + 分镜 JSON</text>
+      <text x="590" y="258" text-anchor="middle" font-size="13" fill="#7C93A0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">single source of truth &#183; shot IDs S-01 … S-n</text>
+    </g>
+
+    <!-- derived outputs -->
+    <path d="M430 280 V304" stroke="#2DD4BF" stroke-opacity="0.6" stroke-width="1.5" marker-end="url(#ahT)"/>
+    <path d="M590 280 V304" stroke="#2DD4BF" stroke-opacity="0.6" stroke-width="1.5" marker-end="url(#ahT)"/>
+    <path d="M750 280 V304" stroke="#2DD4BF" stroke-opacity="0.6" stroke-width="1.5" marker-end="url(#ahT)"/>
+    <path d="M430 304 H306 V326 M750 304 H874 V326" stroke="#2DD4BF" stroke-opacity="0.35" stroke-width="1.3" fill="none"/>
+    <g>
+      <rect x="180" y="330" width="252" height="58" rx="10" fill="#141B29" stroke="#293347"/>
+      <text x="306" y="356" text-anchor="middle" font-size="15" fill="#D7DEEA">口播稿</text>
+      <text x="306" y="376" text-anchor="middle" font-size="11.5" fill="#77839A" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">maps to shot ID</text>
+
+      <rect x="464" y="330" width="252" height="58" rx="10" fill="#141B29" stroke="#293347"/>
+      <text x="590" y="356" text-anchor="middle" font-size="15" fill="#D7DEEA">B-roll 镜头清单</text>
+      <text x="590" y="376" text-anchor="middle" font-size="11.5" fill="#77839A" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">maps to shot ID</text>
+
+      <rect x="748" y="330" width="252" height="58" rx="10" fill="#141B29" stroke="#293347"/>
+      <text x="874" y="356" text-anchor="middle" font-size="15" fill="#D7DEEA">视频生成提示词</text>
+      <text x="874" y="376" text-anchor="middle" font-size="11.5" fill="#77839A" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">maps to shot ID</text>
+    </g>
+
+    <!-- gate -->
+    <path d="M306 388 V416 H590 M874 388 V416 H590 M590 388 V440" stroke="#5A6880" stroke-width="1.5" fill="none"/>
+    <path d="M590 416 V438" stroke="#5A6880" stroke-width="1.5" marker-end="url(#ah)"/>
+    <g>
+      <rect x="330" y="444" width="520" height="58" rx="13" fill="#1A1726" stroke="#A855F7" stroke-opacity="0.5" stroke-width="1.6"/>
+      <text x="590" y="470" text-anchor="middle" font-size="16" font-weight="600" fill="#D9BBFB">分镜一致性核对表</text>
+      <text x="590" y="491" text-anchor="middle" font-size="12" fill="#8C7FA8">每个 shot ID 都必须被下游覆盖，否则不交付</text>
+    </g>
+
+    <!-- fail loop -->
+    <path d="M330 473 H150 V240 H322" stroke="#FF5470" stroke-opacity="0.7" stroke-width="1.5" fill="none" stroke-dasharray="5 5" marker-end="url(#ahR)"/>
+    <text x="160" y="360" font-size="12.5" fill="#FF97A9" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">fail</text>
+
+    <!-- output -->
+    <path d="M590 502 V532" stroke="#2DD4BF" stroke-width="1.8" marker-end="url(#ahT)"/>
+    <text x="606" y="522" font-size="12.5" fill="#7FD9CC" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">pass</text>
+    <g>
+      <rect x="410" y="538" width="360" height="50" rx="11" fill="#10241F" stroke="#2DD4BF" stroke-opacity="0.65" stroke-width="1.6"/>
+      <text x="590" y="569" text-anchor="middle" font-size="16" font-weight="600" fill="#8FF0E2">可开拍的制作方案</text>
+    </g>
+  </g>
+</svg>
