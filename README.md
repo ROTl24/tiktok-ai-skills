@@ -1,77 +1,184 @@
-# TikTok AI Skills
+<div align="center">
 
-这是一个面向 TikTok / Reels / Shorts 短视频广告制作的 AI 技能仓库，当前包含 `tiktok-ugc-ad-maker` 技能。
+# TikTok UGC Ad Maker
 
-## 项目用途
+**Turn a product photo into a shoot-ready TikTok UGC ad plan — with market compliance routed in, not bolted on.**
 
-`tiktok-ugc-ad-maker` 用于把产品图片或产品说明转成中文可执行的 UGC 广告制作方案，包括：
+一张产品图 → 可直接开拍的中文 UGC 广告方案：分镜、口播、B-roll、视频提示词、合规检查，一次产出。
 
-- 产品理解与卖点转译
-- 投放参数确认（含投放方式与 TikTok Shop 挂车）
-- TikTok 风格 Hook 和口播脚本（支持 Hook A/B 变体批量生成）
-- B-roll 镜头清单
-- 分镜图生成表格与 JSON（作为口播/B-roll/视频提示词的源数据，并输出分镜一致性核对表）
-- Seedance / 视频生成提示词
-- 发布前合规检查清单（含披露、AIGC 标注、音乐版权）
-- 发布后数据复盘与迭代建议
+[![Agent Skill](https://img.shields.io/badge/Agent%20Skill-v1.1.0-1B365D)](tiktok-ugc-ad-maker/SKILL.md)
+[![Claude Code](https://img.shields.io/badge/Claude%20Code-compatible-cc785c)](https://claude.com/claude-code)
+[![Codex](https://img.shields.io/badge/Codex-compatible-444)](https://openai.com/codex)
+[![Stars](https://img.shields.io/github/stars/ROTl24/tiktok-ai-skills?style=flat&color=1B365D)](https://github.com/ROTl24/tiktok-ai-skills/stargazers)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen)](#contributing)
 
-## 目录结构
+[Quick Start](#quick-start) · [How It Works](#how-it-works) · [Compliance](#compliance-routing) · [Guardrails](#guardrails) · [中文说明](#中文说明)
+
+</div>
+
+---
+
+## Why this exists
+
+Most AI ad tools write copy. They do not know that a US skincare claim needs substantiation, that 绝对化用语 is illegal in Chinese advertising, that an AI-generated creator must not deliver first-person usage testimony, or that a storyboard shot and its voiceover line have to come from the same source of truth or the shoot falls apart.
+
+`tiktok-ugc-ad-maker` is an Agent Skill that treats an ad plan as a **production document with a quality gate**, not a text generation. Every downstream asset — spoken script, B-roll list, video-generation prompt — is derived from one storyboard JSON, and the plan does not ship until a consistency checklist passes.
+
+## What you get
+
+A single run produces a 14-section production package:
+
+| # | Section | What it is |
+|---|---|---|
+| 0 | 小白解释 | Only the terms this task needs, with why each matters for conversion |
+| 1 | 制作参数确认 | Country, platform, organic vs paid, TikTok Shop card, language, voice format, duration, aspect ratio |
+| 2 | 默认假设 | Every default chosen for you, stated openly and editable |
+| 3 | 产品理解 | Features translated into physical / emotional / routine / proof hooks |
+| 4 | 广告结构 | Timeline with 时间 · 内容 · 目的, hook inside the first 2s |
+| 5 | 合规提示 | Disclosure, AIGC labelling, music rights, claim boundaries |
+| 6 | 达人设定 | Fixed creator reference or designed virtual creator |
+| 7 | Hook 库 | Exactly 10 hooks, A/B ready |
+| 8 | 分镜表 + JSON | The single source of truth for everything downstream |
+| 9-11 | 口播 / B-roll / 视频提示词 | Each block maps back to a storyboard shot ID |
+| 12 | 分镜一致性核对表 | Must pass before delivery |
+| 13 | 发布前检查 + 复盘 | Pre-flight checklist and post-launch iteration |
+
+## Quick Start
+
+Load the repository in any agent runtime that supports local skills (Claude Code, Codex, or your own harness):
+
+```bash
+git clone https://github.com/ROTl24/tiktok-ai-skills.git
+```
+
+Point your agent at `tiktok-ugc-ad-maker/`, then upload a product image and ask:
+
+```
+用 tiktok-ugc-ad-maker 给这个产品做一版美国 TikTok 15 秒真人口播广告方案
+```
+
+The skill confirms six parameters before writing anything:
+
+| Parameter | Options |
+|---|---|
+| 投放国家 / 地区 | US TikTok, 中国抖音, other markets |
+| 发布平台与投放方式 | 自然种草 / 付费投放, TikTok Shop 挂车 是/否 |
+| 口播语言 | any |
+| 声音形式 | 真人口播 / 旁白 |
+| 达人 | uploaded reference (`@Image1`) or designed virtual creator |
+| 视频时长 | 15s / 30s / 45s |
+
+Say "你来决定" and it states its assumptions explicitly instead of hiding them.
+
+## How It Works
+
+```mermaid
+flowchart TD
+    A[Product image or notes] --> B[Category + risk classification]
+    B -->|prohibited / unverifiable| X[Refuse and explain the blocker]
+    B -->|ok| C[Market compliance routing]
+    C --> D[Setup questions - 6 parameters]
+    D --> E[Storyboard table + JSON<br/>single source of truth]
+    E --> F[Spoken script]
+    E --> G[B-roll shot list]
+    E --> H[Seedance / video prompts]
+    F --> I[Consistency checklist<br/>every shot ID accounted for]
+    G --> I
+    H --> I
+    I -->|pass| J[Production package]
+    I -->|fail| E
+```
+
+The storyboard is not a deliverable among others — it is the **origin**. Section 12 fails the run if any shot ID is missing downstream, which is what stops the classic failure mode where the voiceover describes a shot the storyboard never planned.
+
+## Compliance Routing
+
+Coverage depth is **deliberately asymmetric and stated as such** — an honest compliance surface beats a uniform-looking one:
+
+| Market | Depth | Covers |
+|---|---|---|
+| 🇺🇸 US TikTok | Deepest | Beauty/skincare claims, FTC disclosure, FDA cosmetic claim boundaries, influencer rules, AI-creator disclosure |
+| 🇨🇳 中国抖音 | Baseline | 广告法绝对化用语, 品类规则, 价格促销, AIGC 标识 |
+| 🌍 Other markets | Generic | General rules, with an explicit prompt to verify local platform policy |
+
+Compliance references carry a **last-verified date** in their header. If the date is stale, or the category is restricted, the skill tells you to check current official policy before drafting direct-response copy.
+
+## Guardrails
+
+These are the rules the skill will not negotiate on:
+
+- **Refuses to advertise** products that appear prohibited, counterfeit, unsafe, or too regulated to assess — and explains the blocker instead of producing a softened ad.
+- **No fabricated testimony from virtual creators.** An AI-designed creator never says "I've been using this for months." It uses observable demonstration and in-frame reaction, and the AIGC label note is mandatory.
+- **No invented substance.** Ingredients, certifications, test results, and prices are never generated.
+- **No placeholder output.** "Show product", "highlight benefits", "add CTA" fail the quality gate — every section must carry product-specific detail drawn from the actual image.
+- **Reference discipline.** `@Image1` creator, `@Image2` scene/style, `@Image3` product; each shot declares only the references it actually needs.
+
+## Modes
+
+| Mode | Use when |
+|---|---|
+| **Full package** | You want the complete 14-section document in one pass |
+| **Staged delivery** | Confirm the storyboard first, then generate script / B-roll / prompts |
+| **Incremental update** | Change one shot or hook; downstream modules update and the checklist re-runs |
+| **Hook variant** | Swap only the opening for A/B testing, reuse everything else |
+
+## Repository Structure
 
 ```text
 tiktok-ai-skills/
-├── docs/
-│   └── test-results/
-└── tiktok-ugc-ad-maker/
-    ├── SKILL.md
-    ├── agents/
-    │   └── openai.yaml
-    └── references/
-        ├── general-tiktok-product-compliance.md
-        ├── us-tiktok-beauty-compliance.md
-        ├── cn-douyin-compliance.md
-        ├── output-quality-bar.md
-        ├── example-output.md
-        └── iteration-playbook.md
+├── tiktok-ugc-ad-maker/
+│   ├── SKILL.md                 # workflow, quality gate, output contract
+│   ├── agents/openai.yaml
+│   └── references/
+│       ├── general-tiktok-product-compliance.md
+│       ├── us-tiktok-beauty-compliance.md
+│       ├── cn-douyin-compliance.md
+│       ├── output-quality-bar.md
+│       ├── example-output.md      # gold-standard sample
+│       └── iteration-playbook.md
+└── docs/test-results/             # dated verification records
 ```
 
-## 使用方式
+`references/example-output.md` is the quality baseline. Structural changes to `SKILL.md` require updating the sample and leaving a verification record in `docs/test-results/`.
 
-在支持本地技能的 Codex / Claude Code / AI Agent 环境中加载本仓库后，可以通过 `tiktok-ugc-ad-maker` 技能生成 TikTok UGC 广告方案。
+## Design Principles
 
-技能开始前会确认 6 个关键参数：
+- Output serves a real shoot and a real ad buy, not a demo.
+- Prefer specific product information over generic templates.
+- Section numbering and output structure are defined **once** in `SKILL.md`; other documents reference by name to avoid sync drift.
+- Compliance notes exist to keep an ad executable — they are not a substitute for legal review.
 
-- 投放国家 / 地区
-- 发布平台（含自然种草还是付费投放、是否挂 TikTok Shop 商品卡）
-- 口播语言
-- 声音形式：真人口播或旁白
-- 是否已有固定达人参考图（`@Image1`）；没有则设计虚拟达人
-- 视频时长（15s / 30s / 45s）
+## Roadmap
 
-可选补充：分镜 / 场景风格参考图（`@Image2`，没有则由分镜自动生成）、落地页链接、合作关系（受赠 / 佣金）。
+- [ ] Deeper coverage for EU / UK / SEA markets
+- [ ] Additional skills in the repository beyond `tiktok-ugc-ad-maker`
+- [ ] Machine-readable compliance rule files
+- [ ] More gold-standard samples across product categories
 
-如果关键信息不完整，技能会先询问必要参数，再继续生成完整方案。也支持：
+## Contributing
 
-- 分段交付：先出分镜确认，再出口播 / B-roll / 视频提示词
-- 增量更新：改某个镜头或 hook 时联动更新受影响的下游模块并重出核对表
-- Hook 变体：只换开头做 A/B 测试，其余复用
+Issues and PRs welcome. When changing skill behaviour:
 
-## 合规说明
+1. Update `SKILL.md` — it is the single definition of structure.
+2. Regenerate `references/example-output.md` so the sample matches.
+3. Add a dated verification record under `docs/test-results/`.
 
-本技能会根据产品品类做基础风险判断，并参考仓库内的合规文档处理普通商品、受限品类、披露与 AIGC 标注、音乐版权等问题。合规覆盖深度目前不对称：
+## License
 
-- 美国 TikTok：覆盖最深（含美妆专项、FTC 披露、FDA 化妆品宣称边界）
-- 中国抖音：提供基础参考（广告法绝对化用语、品类规则、价格促销、AIGC 标识）
-- 其他市场：按通用规则处理，并提示核对当地平台政策
+Not yet specified. Until a license is added, default copyright applies and reuse rights are not granted.
 
-当达人为 AI 生成的虚拟达人时，技能会应用"虚拟达人证言规则"：不编造使用史类第一人称证言，改用可观察演示与镜头内即时反应，并要求开启 AIGC 标注。
+---
 
-实际投放前仍需核对目标市场、平台政策、落地页信息和广告主资质，避免使用未经证明的功效、安全、认证、价格或对比声明。合规文档头部标注了最后核对日期，间隔较久或涉及受限品类、AIGC 标注、TikTok Shop 时请先核对官方最新政策。
+## 中文说明
 
-## 维护原则
+`tiktok-ugc-ad-maker` 是一个 Agent Skill，把产品图或产品说明转成**可直接开拍**的中文 UGC 广告方案。
 
-- 保持输出面向真实投放和创意执行
-- 优先使用具体产品信息，不写通用模板
-- 不虚构产品成分、认证、测试结果或价格
-- 合规提醒服务于广告可执行性，而不是替代正式法律审查
-- 章节编号与输出结构只在 `SKILL.md` 定义一次，其他文档按名称引用，避免同步漂移
-- `references/example-output.md` 是输出质量基准（金标准样例）；修改 `SKILL.md` 结构后需同步更新样例，并在 `docs/test-results/` 留验收记录
+它和普通 AI 文案工具的区别在于两点：
+
+**一是合规前置。** 在写任何 hook 和卖点之前，先做品类与风险分级，再按目标市场路由到对应合规文档。美国 TikTok 覆盖最深（美妆专项、FTC 披露、FDA 化妆品宣称边界），中国抖音提供基础参考（绝对化用语、价格促销、AIGC 标识）。覆盖深度不对称这件事是明写出来的，不装作全都很懂。
+
+**二是分镜作为唯一事实源。** 口播稿、B-roll 清单、视频生成提示词全部从同一份分镜 JSON 派生，每个时间块都要映射回分镜 shot ID；第 12 节的一致性核对表不通过就不交付。这挡掉了最常见的翻车方式——口播在描述一个分镜里根本没有的镜头。
+
+护栏部分不可协商：违禁 / 假冒 / 无法评估的商品直接拒绝出稿；AI 虚拟达人不得编造使用史证言，只能用可观察的演示和镜头内即时反应，并强制 AIGC 标注；成分、认证、检测结果、价格一律不得虚构。
+
+实际投放前仍需自行核对目标市场政策、落地页信息与广告主资质。
