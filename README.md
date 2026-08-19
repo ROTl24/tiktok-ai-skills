@@ -3,7 +3,7 @@
 <img src="assets/banner.svg" alt="TikTok UGC Ad Maker — turn a product photo into a shoot-ready UGC ad plan" width="100%">
 
 
-[![Agent Skill](https://img.shields.io/badge/agent%20skill-v1.1.0-2DD4BF?style=flat-square&labelColor=141B29)](tiktok-ugc-ad-maker/SKILL.md) [![Claude Code](https://img.shields.io/badge/Claude%20Code-compatible-cc785c?style=flat-square&labelColor=141B29)](https://claude.com/claude-code) [![Codex](https://img.shields.io/badge/Codex-compatible-A855F7?style=flat-square&labelColor=141B29)](https://openai.com/codex) [![Stars](https://img.shields.io/github/stars/ROTl24/tiktok-ai-skills?style=flat-square&color=FF5470&labelColor=141B29)](https://github.com/ROTl24/tiktok-ai-skills/stargazers) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-2DD4BF?style=flat-square&labelColor=141B29)](#contributing)
+[![Agent Skill](https://img.shields.io/badge/agent%20skill-v1.1.0-2DD4BF?style=flat-square&labelColor=141B29)](tiktok-ugc-ad-maker/SKILL.md) [![Claude Code](https://img.shields.io/badge/Claude%20Code-compatible-cc785c?style=flat-square&labelColor=141B29)](https://claude.com/claude-code) [![Codex](https://img.shields.io/badge/Codex-compatible-A855F7?style=flat-square&labelColor=141B29)](https://openai.com/codex) [![Stars](https://img.shields.io/github/stars/ROTl24/tiktok-ai-skills?style=flat-square&color=FF5470&labelColor=141B29)](https://github.com/ROTl24/tiktok-ai-skills/stargazers) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-2DD4BF?style=flat-square&labelColor=141B29)](#contributing) [![License: MIT](https://img.shields.io/badge/license-MIT-8FF0E2?style=flat-square&labelColor=141B29)](LICENSE)
 
 [Quick Start](#quick-start) · [How It Works](#how-it-works) · [Compliance](#compliance-routing) · [Guardrails](#guardrails) · [中文说明](#中文说明)
 
@@ -145,7 +145,7 @@ Issues and PRs welcome. When changing skill behaviour:
 
 ## License
 
-Not yet specified. Until a license is added, default copyright applies and reuse rights are not granted.
+[MIT](LICENSE) © 陆振豪 (ROTl24)
 
 ---
 
